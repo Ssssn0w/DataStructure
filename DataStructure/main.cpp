@@ -1,14 +1,16 @@
-//
-//  main.cpp
-//  DataStructure
-//
-//  Created by Noth Amor on 2023/1/30.
-//
-
 #include <iostream>
+#include <stdlib.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+// 静态链表
+typedef struct {
+    int data;
+    int next;
+} SLinkList[10];
+
+int main() {
+    SLinkList s;
+    
     return 0;
 }
