@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include "StaticSequenceList.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ typedef struct {
 } SLinkList[10];
 
 int main() {
-    SLinkList s;
+    StaticSequenceListTest();
     
     return 0;
 }
