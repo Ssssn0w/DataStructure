@@ -200,16 +200,45 @@ void DropDuplicateElementInSequenceList(SqList &L) {
         std::cout << "顺序表未初始化" << std::endl;
     }
 
+    int k = 0;
     for (int i = 0; i < L.size; i++) {
-        for (int j = i; j < L.size; j++) {
-            if (L.data[j] == L.data[i]) {
-                for (int k = j; k < L.size; k++) {
-                    L.data[k] = L.data[k + 1];
-                }
-            }
+        if (L.data[i] != L.data[i + 1]) {
+            L.data[k] = L.data[i];
+            k++;
         }
     }
+    
+    L.size = k;
 }
+
+// 将两个有序顺序表合并成一个新的有序顺序表，并由函数返回结果顺序表
+SqList MergeTwoOrderlySequenceList(SqList L1, SqList L2) {
+    if (L1.size == 0 || L2.size == 0) {
+        std::cout << "顺序表未初始化" << std::endl;
+    }
+    
+    SqList result;
+    
+    int i = 0, j = 0, k = 0;
+    while (i < L1.size && j < L2.size) {
+        if (L1.data[i] <= L2.data[j]) {
+            result.data[k++] = L1.data[i++];
+        } else {
+            result.data[k++] = L2.data[j++];
+        }
+    }
+    
+    while (i < L1.size) {
+        result.data[k++] = L1.data[i++];
+    }
+    while (j < L2.size) {
+        result.data[k++] = L2.data[j++];
+    }
+    result.size = k;
+    return result;
+}
+
+// 
 
 // 静态顺序表测试
 void StaticSequenceListTest() {
@@ -235,14 +264,40 @@ void StaticSequenceListTest() {
     //std::cout << "delete status: " << deleteStatus << std::endl;
     //std::cout << "empty status: " << Empty(L) << std::endl;
     //std::cout << DeleteMinimumElementInSequenceList(L, element) << std::endl;
+    
+    SqList L1;
+    SqList L2;
+    
+    L1.data[0] = 1;
+    L1.data[1] = 3;
+    L1.data[2] = 5;
+    L1.data[3] = 7;
+    L1.size = 4;
+    
+    L2.data[0] = 2;
+    L2.data[1] = 4;
+    L2.data[2] = 6;
+    L2.data[3] = 8;
+    L2.size = 4;
+    
+    for (int i = 0; i < L1.size; i++) {
+        std::cout << L1.data[i];
+    }
+    std::cout << std::endl;
+    
+    for (int i = 0; i < L2.size; i++) {
+        std::cout << L2.data[i];
+    }
+    std::cout << std::endl;
 
-    PrintList(L);
+    //PrintList(L);
     //ReverseSequenceListElement(L);
     //DeleteSpecifiedElementInSequenceList(L, 4);
     //DeleteElementBetweenSAndT(L, 2, 4);
     //DeleteElementBetweenSAndTWithItself(L, 2, 4);
-    DropDuplicateElementInSequenceList(L);
-    PrintList(L);
+    //DropDuplicateElementInSequenceList(L);
+    SqList result = MergeTwoOrderlySequenceList(L1, L2);
+    PrintList(result);
     
     DestroyList(L);
 }
