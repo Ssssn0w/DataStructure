@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		102A36C1298C114B0037F7B0 /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
 		108A953A29878C0D005C28B4 /* DataStructure */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructure; sourceTree = BUILT_PRODUCTS_DIR; };
 		108A953D29878C0D005C28B4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		108A954429878C66005C28B4 /* DoubleLinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleLinkList.h; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 			children = (
 				108A953D29878C0D005C28B4 /* main.cpp */,
 				109F279E2988BD3E00A3EF26 /* StaticSequenceList.h */,
+				102A36C1298C114B0037F7B0 /* LinkList.h */,
 				108A9547298794DA005C28B4 /* CycleDoubleLinkList.h */,
 				108A9546298792B3005C28B4 /* CycleLinkList.h */,
 				108A954429878C66005C28B4 /* DoubleLinkList.h */,

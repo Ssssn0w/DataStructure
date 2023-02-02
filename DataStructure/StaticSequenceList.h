@@ -238,7 +238,46 @@ SqList MergeTwoOrderlySequenceList(SqList L1, SqList L2) {
     return result;
 }
 
-// 
+// 已知在一维数组A[m+n]中依次存放两个线性表m和n，编写一个函数，将数组中两个顺序表的位置互换，即将n放在m的前面。
+void Reverse(int A[], int middle, int arraySize) {
+    int temp = 0;
+    for (int i = 0; i < arraySize / 2; i++) {
+        temp = A[i];
+        A[i] = A[arraySize - i];
+        A[arraySize - i] = temp;
+    }
+}
+
+// 线性表中的元素递增有序且按顺序存储于计算机内，要求设计一个算法，完成用最少时间在表中查找数值为x的元素，若找到，则将其与后继元素位置相交换，若找不到，则将其插入表中并使表中元素仍递增有序。
+void SearchExchangeInsert(SqList &L, int x) {
+    if (L.size == 0 && L.size + 1 < L.length) {
+        std::cout << "顺序表尚未初始化或顺序表空间不足" << std::endl;
+        return;
+    }
+    
+    int temp = 0;
+    for (int i = 0; i < L.size; i++) {
+        if (L.data[i] == x) {
+            temp = L.data[i];
+            L.data[i] = L.data[i + 1];
+            L.data[i + 1] = temp;
+            return;
+        }
+    }
+    
+    for (int i = 0; i < L.size; i++) {
+        if (x > L.data[i] && x < L.data[i + 1]) {
+            for (int j = L.size + 1; j > i + 1; j--) {
+                temp = L.data[j];
+                L.data[j] = L.data[j - 1];
+                L.data[j - 1] = temp;
+            }
+            L.data[i + 1] = x;
+            L.size++;
+            return;
+        }
+    }
+}
 
 // 静态顺序表测试
 void StaticSequenceListTest() {
@@ -279,16 +318,6 @@ void StaticSequenceListTest() {
     L2.data[2] = 6;
     L2.data[3] = 8;
     L2.size = 4;
-    
-    for (int i = 0; i < L1.size; i++) {
-        std::cout << L1.data[i];
-    }
-    std::cout << std::endl;
-    
-    for (int i = 0; i < L2.size; i++) {
-        std::cout << L2.data[i];
-    }
-    std::cout << std::endl;
 
     //PrintList(L);
     //ReverseSequenceListElement(L);
@@ -296,8 +325,9 @@ void StaticSequenceListTest() {
     //DeleteElementBetweenSAndT(L, 2, 4);
     //DeleteElementBetweenSAndTWithItself(L, 2, 4);
     //DropDuplicateElementInSequenceList(L);
-    SqList result = MergeTwoOrderlySequenceList(L1, L2);
-    PrintList(result);
+    //SqList result = MergeTwoOrderlySequenceList(L1, L2);
+    SearchExchangeInsert(L1, 2);
+    PrintList(L1);
     
     DestroyList(L);
 }
